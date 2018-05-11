@@ -1,0 +1,48 @@
+{
+  "name": "kuainiu/laravel-kuainiu",
+  "description": "API client wrapper for Laravel & Connect provider for Laravel Socialite",
+  "homepage": "https://github.com/kuainiu/laravel-kuainiu",
+  "license": "BSD-2-Clause",
+  "authors": [
+    {
+      "name": "Allen",
+      "email": "hi@summic.com"
+    }
+  ],
+  "keywords": [
+    "kuainiu", "socialite"
+  ],
+  "require": {
+    "php": "^5.5.9 || ^7.0",
+    "illuminate/contracts": "^5.0",
+    "illuminate/support": "^5.0",
+    "laravel/socialite": "^3.0"
+  },
+  "require-dev": {
+    "graham-campbell/testbench": "^3.1",
+    "phpunit/phpunit": "^4.8 || ^5.0",
+    "mockery/mockery": "^0.9.5 || ^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kuainiu\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Kuainiu\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+      "laravel": {
+          "providers": [
+            "Kuainiu\\KuainiuServiceProvider"
+          ],
+          "aliases": {
+            "Kuainiu": "Kuainiu\\Facades\\Kuainiu"
+          }
+      }
+  }
+}
