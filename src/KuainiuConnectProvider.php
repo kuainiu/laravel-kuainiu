@@ -12,26 +12,17 @@ use Laravel\Socialite\Two\User;
 class KuainiuConnectProvider extends AbstractProvider implements ProviderInterface
 {
 
-    /**
-     * The scopes being requested.
-     *
-     * @var array
-     */
-    protected $scopes = ['user_basic']; //'organizations.read'];
+    protected $scopes = ['user_basic'];
+    protected $domain = 'https://kuainiu.io';
 
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase('https://kuainiu.io/oauth/authorize', $state);
+        return $this->buildAuthUrlFromBase($this->domain . '/oauth/authorize', $state);
     }
 
-    /**
-     * Get the token URL for the provider.
-     *
-     * @return string
-     */
     protected function getTokenUrl()
     {
-        return 'https://kuainiu.io/oauth/token';
+        return $this->domain .'/oauth/token';
     }
 
     /**
@@ -59,7 +50,7 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
      */
     protected function getRefreshTokenFields($refresh_token)
     {
-        
+
         return [
             'client_id' => $this->clientId,
             'client_secret' => $this->clientSecret,
@@ -89,7 +80,7 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get('https://kuainiu.io/api/user', [
+        $response = $this->getHttpClient()->get($this->domain .'/api/user', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$token,
