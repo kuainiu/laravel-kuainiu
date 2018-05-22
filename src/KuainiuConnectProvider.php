@@ -13,7 +13,7 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
 {
 
     protected $scopes = ['user_basic'];
-    protected $domain = 'https://kuainiu.io';
+    protected $domain = 'http://passport.com';
 
     protected function getAuthUrl($state)
     {
@@ -97,19 +97,14 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
      *
      * @return \Laravel\Socialite\Two\User
      */
-    protected function mapUserToObject(array $user)
+    protected function mapUserToObject(array $response)
     {
+        $user =  $response['data'];
         return (new User)->setRaw($user)->map([
-            'id' => $user['data']['id'],
-            'username' => $user['data']['name'],
-            'employee_num' => $user['data']['employee_num'],
-            'chinese_name' => $user['data']['english_name'],
-            'english_name' => $user['data']['english_name'],
-            'name' => $user['data']['name'],
-            'email' => $user['data']['email'],
-            'avatar' => $user['data']['avatar'],
-            'departments' => $user['data']['departments'],
-            'certificate' => $user['data']['certificate'],
+            'id' => $user['id'],
+            'name' => $user['name'],
+            'email' => $user['email'],
+            'avatar' => $user['avatar']
         ]);
     }
 }
