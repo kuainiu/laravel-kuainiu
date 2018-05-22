@@ -80,7 +80,7 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get($this->domain .'/api/user', [
+        $response = $this->getHttpClient()->get($this->domain .'/api/v1/users/me', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$token,
@@ -100,12 +100,12 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
     protected function mapUserToObject(array $user)
     {
         return (new User)->setRaw($user)->map([
-            'id' => $user['id'],
-            'chinese_name' => $user['english_name'],
-            'english_name' => $user['english_name'],
-            'name' => $user['name'],
-            'email' => $user['email'],
-            'avatar' => $user['avatar'],
+            'id' => $user['data']['id'],
+            'chinese_name' => $user['data']['english_name'],
+            'english_name' => $user['data']['english_name'],
+            'name' => $user['data']['name'],
+            'email' => $user['data']['email'],
+            'avatar' => $user['data']['avatar'],
         ]);
     }
 }
