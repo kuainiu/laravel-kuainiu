@@ -106,6 +106,8 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
             'name' => $user['data']['name'],
             'email' => $user['data']['email'],
             'avatar' => $user['data']['avatar'],
+            'departments' => $user['data']['departments'],
+            'certificate' => $user['data']['certificate'],
         ]);
     }
 }
