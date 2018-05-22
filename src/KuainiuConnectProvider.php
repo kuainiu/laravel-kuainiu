@@ -101,6 +101,8 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
     {
         return (new User)->setRaw($user)->map([
             'id' => $user['data']['id'],
+            'username' => $user['data']['name'],
+            'employee_num' => $user['data']['employee_num'],
             'chinese_name' => $user['data']['english_name'],
             'english_name' => $user['data']['english_name'],
             'name' => $user['data']['name'],
