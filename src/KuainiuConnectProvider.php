@@ -13,7 +13,7 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
 {
 
     protected $scopes = ['user_basic'];
-    protected $domain = 'http://passport.com';
+    protected $domain = 'https://kuainiu.io';
 
     protected function getAuthUrl($state)
     {
