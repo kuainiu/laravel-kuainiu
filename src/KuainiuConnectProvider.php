@@ -97,14 +97,19 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
      *
      * @return \Laravel\Socialite\Two\User
      */
-    protected function mapUserToObject(array $response)
+    protected function mapUserToObject(array $resp)
     {
-        $user =  $response['data'];
+        $user = $resp['data'];
         return (new User)->setRaw($user)->map([
             'id' => $user['id'],
             'name' => $user['name'],
+            'chinese_name' => $user['english_name'],
+            'english_name' => $user['english_name'],
+            'position' => $user['position'],
             'email' => $user['email'],
-            'avatar' => $user['avatar']
+            'avatar' => $user['avatar'],
+            'departments' => $user['departments'],
+            'certificate' => $user['certificate'],
         ]);
     }
 }
