@@ -4,7 +4,7 @@ Laravel-Kuainiu incorporates Kuainiu Connect and the Kuainiu API  into your [Lar
 
 ## Requirements
 
-* [Laravel Socialite](https://github.com/laravel/socialite) (if you intend on using Mollie Connect)
+* [Laravel Socialite](https://github.com/laravel/socialite) (if you intend on using Kuainiu Connect)
 
 ## Installation
 
@@ -34,7 +34,7 @@ This will create a `config/kuainiu.php` file in your app that you can modify to 
 
 ### Kuainiu PAssport Connect with Laravel Socialite
 
-If you intend on using Mollie Connect, update `config/services.php` by adding this to the array:
+If you intend on using Kuainiu Connect, update `config/services.php` by adding this to the array:
 
 ```php
 'kuainiu' => [
@@ -44,10 +44,10 @@ If you intend on using Mollie Connect, update `config/services.php` by adding th
 ],
 ```
 
-To make sure Laravel Socialite can actually find the Mollie driver, use the following code snippet and paste it in the `boot()` method from your `AppServiceProvider.php`.
+To make sure Laravel Socialite can actually find the Kuainiu driver, use the following code snippet and paste it in the `boot()` method from your `AppServiceProvider.php`.
 
 ```php
-Socialite::extend('mollie', function ($app) {
+Socialite::extend('kuainiu', function ($app) {
     $config = $app['config']['services.kuainiu'];
 
     return Socialite::buildProvider('Kuainiu\KuainiuConnectProvider', $config);
@@ -61,12 +61,13 @@ Here you can see an example of just how simple this package is to use.
 ### Kuainiu API
 
 ```php
+
 $user = Kuainiu::api()->user()->create([
     "name"      => 'user_name_',
     "mobile" => "13800138000"
 ]);
 
-$user = Kuainiu::api()->user()->get($user->id);
+$user = Kuainiu::createUser(['name'=>'name']);
 
 if ($user->isCreated())
 {
@@ -84,11 +85,7 @@ Route::get('login', function () {
 });
 
 Route::get('login_callback', function () {
-    $user = Socialite::with('kuainiu')->user();
-
-    Kuainiu::api()->setAccessToken($user->token);
-
-    return Kuainiu::api()->users()->all(); // Retrieve all payment profiles available on the obtained Mollie account
+    return Socialite::with('kuainiu')->user();
 });
 ```
 
