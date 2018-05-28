@@ -11,7 +11,6 @@ class KuainiuApi
 
     protected $httpClient;
     protected $guzzle = [];
-    protected $access_token;
 
     public function getUser($uid)
     {

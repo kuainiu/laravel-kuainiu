@@ -3,7 +3,6 @@
 namespace Kuainiu\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Kuainiu\Wrappers\KuainiuApi;
 
 /**
  * (Facade) Class Kuainiu.
