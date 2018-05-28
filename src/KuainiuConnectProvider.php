@@ -93,7 +93,7 @@ class KuainiuConnectProvider extends AbstractProvider implements ProviderInterfa
     /**
      * Map the raw user array to a Socialite User instance.
      *
-     * @param array $user
+     * @param array $resp
      *
      * @return \Laravel\Socialite\Two\User
      */

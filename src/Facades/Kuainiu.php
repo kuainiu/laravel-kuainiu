@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Facade;
 use Kuainiu\Wrappers\KuainiuApi;
 
 /**
- * (Facade) Class Mollie.
+ * (Facade) Class Kuainiu.
  *
- * @method static KuainiuApi api()
+ * @method static Kuainiu
  */
 class Kuainiu extends Facade
 {

@@ -11,9 +11,10 @@ return [
     // 复制以下代码到 'config/services.php'
     /*
     'kuainiu' => [
-         'client_id'     => env('KUAINIU_CLIENT_ID'),
-         'client_secret' => env('KUAINIU_CLIENT_SECRET'),
-         'redirect'      => env('KUAINIU_REDIRECT_URI'),
+         'domain'       => env('KUAINIU_DOMAIN'),
+         'client_id'    => env('KUAINIU_CLIENT_ID'),
+         'client_secret'=> env('KUAINIU_CLIENT_SECRET'),
+         'redirect'     => env('KUAINIU_REDIRECT_URI'),
      ],
     */
 ];
