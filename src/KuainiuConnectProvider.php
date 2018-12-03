@@ -12,7 +12,7 @@ use Laravel\Socialite\Two\User;
 class KuainiuConnectProvider extends AbstractProvider implements ProviderInterface
 {
 
-    protected $scopes = ['user_basic'];
+    protected $scopes = [];
     protected $domain = 'https://kuainiu.io';
 
     protected function getAuthUrl($state)
