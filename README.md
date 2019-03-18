@@ -81,7 +81,7 @@ if ($user->isCreated())
 ```php
 Route::get('login', function () {
     return Socialite::with('kuainiu')
-        ->setScopes(['user.basic'])// get basic permission: user.basic
+        ->scopes('profiles.read profiles.write') // Additional permission: profiles.read profiles.write(the string need space separator)
         ->redirect();
 });
 

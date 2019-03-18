@@ -12,7 +12,8 @@ use Laravel\Socialite\Two\User;
 class KuainiuConnectProvider extends AbstractProvider implements ProviderInterface
 {
 
-    protected $scopes            = ['user_basic'];
+
+    protected $scopes            = [];
     protected $oauthServerDomain = 'https://kuainiu.io';
     protected $profileMap        = [ // Optional, but if defined, all must be declared
         'id_field'           => 'id',
