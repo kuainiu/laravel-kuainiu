@@ -38,9 +38,10 @@ If you intend on using Kuainiu Connect, update `config/services.php` by adding t
 
 ```php
 'kuainiu' => [
-    'client_id' => env('KUAINIU_CLIENT_ID', 'app_xxx'),
-    'client_secret' => env('KUAINIU_CLIENT_SECRET'),
-    'redirect' => env('KUAINIU_REDIRECT_URI'),
+    'oauthServerDomain' => env('KUAINIU_OAUTH_DOMAIN'),
+    'client_id'         => env('KUAINIU_CLIENT_ID', 'app_xxx'),
+    'client_secret'     => env('KUAINIU_CLIENT_SECRET'),
+    'redirect'          => env('KUAINIU_REDIRECT_URI'),
 ],
 ```
 
@@ -84,8 +85,9 @@ Route::get('login', function () {
         ->redirect();
 });
 
-Route::get('login_callback', function () {
-    return Socialite::with('kuainiu')->user();
+Route::get('kuainiu/user/auth', function () {
+    $user = Socialite::with('kuainiu')->stateless()->user();
+    dd($user);
 });
 ```
 
